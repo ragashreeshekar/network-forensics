@@ -1,0 +1,25 @@
+# DMWA Pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dvwa-pod
+spec:
+  containers:
+  - name: dvwa-container
+    image: vulnerables/web-dvwa
+    ports:
+    - containerPort: 80
+
+# DMWA Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: dvwa-service
+spec:
+  selector:
+    app: dvwa
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
